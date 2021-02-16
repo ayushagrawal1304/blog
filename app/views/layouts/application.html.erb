@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= render partial: '/layouts/header' %>
+    <% end %>
     <%= yield %>
+    <%= render partial: '/shared/flash_messages' %>
   </body>
 </html>
