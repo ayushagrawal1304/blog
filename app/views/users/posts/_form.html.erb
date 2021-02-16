@@ -1,0 +1,5 @@
+<%= form_with(model: comment, url: users_post_comments_path(post.id), remote:true) do |f| %>
+  <%= f.label :add_comment %>
+  <p><%= f.text_area :description, required: true, class:"form-control", placeholder: "write comments here... "  %></p>
+  <p><%= f.submit "comment",class: "btn btn-success" %></p>
+<%end%>

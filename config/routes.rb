@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :users do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
   end
 end

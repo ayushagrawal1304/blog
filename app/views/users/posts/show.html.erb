@@ -1,8 +1,49 @@
 <div class="container">
   <p><h3> <%= @post.title %> </h3></p>  
   <p><br><%= @post.description %></br></p>
+  <div class="comment-form">
+    <%= render partial: 'form', locals: { post: @post, comment: @comment }%>
+  </div>
+
+  <div id ="comments-container">
+    <%= @comments.size %> comments   <br></br>
+    <% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <div class="comment span">
+          <%= image_tag("icon.jpeg", :size => "20x20") %>
+          <span><%= comment.user.email %></span>
+          <br><%= comment.description %></br>
+          <span><%= comment.created_at.to_time.strftime('%B %e at %l:%M %p') %></span>
+          <p>
+            <div class="nested-form">
+              <% if comment.comment %>
+                <%= comment.comment.description %>
+                <%= image_tag("icon.jpeg", :size => "20x20") %>
+                <span><%= @post.user.email %></span>
+              <% elsif current_user.eql?(@post.user)%>
+                  <%= render partial: 'reply_form', locals: { post: @post, comment: @comment, commentable_id: comment.id }%>
+              <%end%>
+            </div>
+          </p>
+          <hr>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
 </div>
 
+<style type="text/css">
+  .comment{
+    margin-left: 15px;
+  }
 
+  .comment span{
+    color: grey;
+  }
+
+  .nested-form{
+    margin-left: 30px;
+  }
+</style>
 
 
