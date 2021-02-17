@@ -1,0 +1,29 @@
+.custom-button{
+  background: grey;
+  color: black; 
+  margin-right: 15px;
+}
+
+.custom-button:hover {
+  background-color: white;
+}
+
+.main-container{
+  margin-top: 20px;
+}
+
+.custom_pagination{
+  justify-content: center;
+  display: flex;
+  padding-top: 20px;
+}
+
+.page-item.active .page-link
+{
+  background-color: black;
+}
+
+.pagination > li > a
+{
+  color: black; 
+}

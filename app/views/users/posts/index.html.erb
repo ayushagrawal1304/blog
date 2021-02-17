@@ -1,3 +1,4 @@
 <%= render partial: 'list', locals: { posts: @posts } %>
-
-
+<div class="custom_pagination">
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

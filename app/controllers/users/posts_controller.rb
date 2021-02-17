@@ -1,7 +1,7 @@
 class Users::PostsController < ApplicationController
 
   def index
-    @posts = Post.order_by_recent
+    @posts = Post.order_by_recent.paginate(page: params[:page], per_page: 10)
   end
 
   def show
